@@ -28,4 +28,13 @@ export class TodoService {
       return todoElement.id !== todo.id;
     });
   }
+
+  public toggleTodo(todo: Todo): void{
+    this.todos = this.todos.map((todoElement: Todo): Todo => {
+      if (todo.id === todoElement.id){
+        todoElement.complete = !todoElement.complete;
+      }
+      return todoElement;
+    });
+  }
 }
