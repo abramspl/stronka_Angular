@@ -19,4 +19,8 @@ export class TodosComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public onDelete(todo: Todo): void {
+    console.log('TodosComponent', todo);
+  }
+
 }
