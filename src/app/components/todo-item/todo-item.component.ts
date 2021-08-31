@@ -13,6 +13,9 @@ export class TodoItemComponent implements OnInit {
   @Output()
   public deleteTodo: EventEmitter<Todo> = new EventEmitter();
 
+  @Output()
+  public toggleTodo: EventEmitter<Todo> = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
@@ -22,8 +25,8 @@ export class TodoItemComponent implements OnInit {
     this.deleteTodo.emit(todo);
   }
 
-  public onToggle(): void {
-    this.todo.complete = !this.todo.complete;
+  public onToggle(todo: Todo): void {
+    this.toggleTodo.emit(todo);
   }
 
   public setClasses(): string {
