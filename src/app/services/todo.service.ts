@@ -22,4 +22,10 @@ export class TodoService {
   ];
 
   constructor() { }
+
+  public deleteTodo(todo: Todo): void {
+    this.todos = this.todos.filter((todoElement : Todo): boolean => {
+      return todoElement.id !== todo.id;
+    });
+  }
 }

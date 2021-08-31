@@ -20,7 +20,8 @@ export class TodosComponent implements OnInit {
   }
 
   public onDelete(todo: Todo): void {
-    console.log('TodosComponent', todo);
+    this.todoService.deleteTodo(todo);
+    this.todos = this.todoService.todos;
   }
 
 }
