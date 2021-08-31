@@ -29,4 +29,8 @@ export class TodosComponent implements OnInit {
     this.todos = this.todoService.todos;
   }
 
+  public onAdd(todo: Todo): void {
+    this.todoService.addTodo(todo);
+  }
+
 }

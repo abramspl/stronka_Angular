@@ -21,6 +21,7 @@ export class AddTodoComponent implements OnInit {
     const todo: Todo = new Todo();
 
     todo.complete = false;
+    todo.content = this.todoContent;
     this.createTodo.emit(todo);
 
   }
