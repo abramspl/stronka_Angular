@@ -37,4 +37,24 @@ export class TodoService {
       return todoElement;
     });
   }
+
+  public addTodo(todo: Todo): void{
+
+    todo.id = this.getLastTodoId() + 1;
+    this.todos.push(todo);
+  }
+
+  private getLastTodoId(): number {
+    var lastId: number = 0;
+
+    this.todos.forEach((todoElement: Todo) => {
+      const todoElementId = todoElement.id ?? 0;
+
+      if(lastId < todoElementId) {
+        lastId = todoElementId;
+      }
+    });
+    return lastId;
+  }
+
 }
