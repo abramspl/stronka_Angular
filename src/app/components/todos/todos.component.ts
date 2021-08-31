@@ -24,4 +24,8 @@ export class TodosComponent implements OnInit {
     this.todos = this.todoService.todos;
   }
 
+  public onToggle(todo: Todo): void{
+    this.todoService.toggleTodo(todo);
+  }
+
 }
