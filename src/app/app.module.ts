@@ -3,12 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material/material.module'; // nasza zmiana
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { TitleComponent } from './components/title/title.component';
 import { TodosComponent } from './components/todos/todos.component';
 import { AboutComponent } from './components/about/about.component';
 import { TodoItemComponent } from './components/todo-item/todo-item.component';
+import { AddTodoComponent } from './components/add-todo/add-todo.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +18,15 @@ import { TodoItemComponent } from './components/todo-item/todo-item.component';
     TitleComponent,
     TodosComponent,
     AboutComponent,
-    TodoItemComponent
+    TodoItemComponent,
+    AddTodoComponent,    
   ],
   imports: [
     MaterialModule, //nasza zmiana
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
