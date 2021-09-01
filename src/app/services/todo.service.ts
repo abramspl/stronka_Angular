@@ -53,13 +53,15 @@ export class TodoService {
     );
   }
 
-  public toggleTodo(todo: Todo): void{
-    this.todos = this.todos.map((todoElement: Todo): Todo => {
-      if (todo.id === todoElement.id){
-        todoElement.completed = !todoElement.completed;
-      }
-      return todoElement;
-    });
+  public toggleTodo(todo: Todo): Observable<Todo> {
+    const url: string = `${this.url}/${todo.id}`;
+
+    return this.httpClient.put<Todo>(
+      url,
+      todo,
+      httpOptions
+    );
+
   }
 
   public addTodo(todo: Todo): Observable<Todo>{

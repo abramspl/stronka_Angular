@@ -24,7 +24,7 @@ export class TodosComponent implements OnInit {
 
   public onDelete(todo: Todo): void {
     this.todoService.deleteTodo(todo).subscribe(
-      () => {
+      (todoResponse: Todo) => {
         this.todos = this.todos.filter(
           (todoElement: Todo): boolean => {
             return todoElement.id !== todo.id;
@@ -35,8 +35,18 @@ export class TodosComponent implements OnInit {
   }
 
   public onToggle(todo: Todo): void{
-    this.todoService.toggleTodo(todo);
-    this.todos = this.todoService.todos;
+    this.todoService.toggleTodo(todo).subscribe(
+      (todoResponse: Todo) => {
+        this.todos = this.todos.map(
+          (todoElement: Todo): Todo => {
+            if (todo.id === todoElement.id){
+              todoElement.completed = !todoElement.completed;
+            }
+            return todoElement;
+          }
+        );
+      }
+    );
   }
 
   public onAdd(todo: Todo): void {
