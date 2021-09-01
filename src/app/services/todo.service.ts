@@ -1,8 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Todo } from '../models/Todo';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application-json'
+  }),
+}
 
 @Injectable({
   providedIn: 'root'
@@ -53,10 +59,12 @@ export class TodoService {
     });
   }
 
-  public addTodo(todo: Todo): void{
-
-    todo.id = this.getLastTodoId() + 1;
-    this.todos.push(todo);
+  public addTodo(todo: Todo): Observable<Todo>{
+    return this.httpClient.post<Todo>(
+      this.url,
+      todo,
+      httpOptions
+    );
   }
 
   private getLastTodoId(): number {
