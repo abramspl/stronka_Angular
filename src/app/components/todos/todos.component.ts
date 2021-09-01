@@ -34,8 +34,8 @@ export class TodosComponent implements OnInit {
 
   public onAdd(todo: Todo): void {
     this.todoService.addTodo(todo).subscribe(
-      (todoRespone: Todo) => {
-        todo.id = todoRespone.id;
+      (todoResponse: Todo) => {
+        todo.id = todoResponse.id;
         this.todos.push(todo);
       }
     );
