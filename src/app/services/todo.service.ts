@@ -11,7 +11,7 @@ export class TodoService {
 
   private url: string = 'https://jsonplaceholder.typicode.com/todos';
 
-  private limit: string = '&_limit=5';
+  private limit: string = '?_limit=5';
 
   constructor(private httpClient: HttpClient) { }
 
