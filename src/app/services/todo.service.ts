@@ -44,10 +44,13 @@ export class TodoService {
     );
   }
 
-  public deleteTodo(todo: Todo): void {
-    this.todos = this.todos.filter((todoElement : Todo): boolean => {
-      return todoElement.id !== todo.id;
-    });
+  public deleteTodo(todo: Todo): Observable<Todo> {
+    const url: string = `${this.url}/${todo.id}`;
+
+    return this.httpClient.delete<Todo>(
+      url,
+      httpOptions
+    );
   }
 
   public toggleTodo(todo: Todo): void{
@@ -65,19 +68,6 @@ export class TodoService {
       todo,
       httpOptions
     );
-  }
-
-  private getLastTodoId(): number {
-    var lastId: number = 0;
-
-    this.todos.forEach((todoElement: Todo) => {
-      const todoElementId = todoElement.id ?? 0;
-
-      if(lastId < todoElementId) {
-        lastId = todoElementId;
-      }
-    });
-    return lastId;
   }
 
 }

@@ -23,8 +23,15 @@ export class TodosComponent implements OnInit {
   }
 
   public onDelete(todo: Todo): void {
-    this.todoService.deleteTodo(todo);
-    this.todos = this.todoService.todos;
+    this.todoService.deleteTodo(todo).subscribe(
+      () => {
+        this.todos = this.todos.filter(
+          (todoElement: Todo): boolean => {
+            return todoElement.id !== todo.id;
+          }
+        );
+      }
+    );
   }
 
   public onToggle(todo: Todo): void{
