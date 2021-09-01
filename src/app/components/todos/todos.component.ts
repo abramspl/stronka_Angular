@@ -8,15 +8,18 @@ import { TodoService } from 'src/app/services/todo.service';
   styleUrls: ['./todos.component.css']
 })
 export class TodosComponent implements OnInit {
-  public todos: Todo[];
+  public todos!: Todo[];
 
   constructor(
     private todoService: TodoService,
-  ) {
-    this.todos = this.todoService.todos;
-  }
+  ) { }
 
   ngOnInit(): void {
+    this.todoService.getTodos().subscribe(
+      (todos: Todo[]) => {
+        this.todos = todos;
+      }
+    );
   }
 
   public onDelete(todo: Todo): void {

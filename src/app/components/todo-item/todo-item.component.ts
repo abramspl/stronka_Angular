@@ -32,7 +32,7 @@ export class TodoItemComponent implements OnInit {
   public setClasses(): string {
     var classes = '';
 
-    if (this.todo.complete){
+    if (this.todo.completed){
       classes = 'is-completed';
     }
 
